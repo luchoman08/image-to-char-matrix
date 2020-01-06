@@ -33,7 +33,7 @@ def three_rule(a, b, c):
     return b*c/a
 
 
-def scale(image_size, expected_width):
+def scale(image_size: tuple, expected_width: int):
     """Returns the division between the image with over the expected width
     """
     return expected_width/image_size[0]
@@ -74,7 +74,7 @@ def image_to_char_matrix(image_bytes: BytesIO, expected_width=None, black_thresh
 
 
 def image_file_to_char_matrix(file_name: str, expected_width=None, black_threshold=150, black_char="X", white_char="-"):
-    """Open image and return a char matrix based in the read files
+    """Open image and return a char matrix based in the read file
     """
     image_bytes = open(file_name, 'rb')
     return image_to_char_matrix(image_bytes,
@@ -84,3 +84,19 @@ def image_file_to_char_matrix(file_name: str, expected_width=None, black_thresho
                                 white_char=white_char)
 
 
+def image_to_char_image(image_bytes: BytesIO,
+                        expected_width=None,
+                        black_threshold=150,
+                        black_char="X",
+                        white_char="-",
+                        font=None):
+    """Open image and return a char image based in the read file
+    """
+    if font is None:
+        font = default_font
+    char_matrix = image_to_char_matrix(image_bytes,
+                                       expected_width=expected_width,
+                                       black_threshold=black_threshold,
+                                       black_char=black_char,
+                                       white_char=white_char)
+    return char_matrix_to_image(char_matrix, font)
