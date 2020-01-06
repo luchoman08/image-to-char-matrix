@@ -3,7 +3,7 @@ from PIL.ImageFont import FreeTypeFont
 import numpy
 from io import BytesIO
 
-default_font = ImageFont.truetype("sans-serif.ttf", 20)
+default_font = ImageFont.truetype("fonts/sans-serif.ttf", 20)
 
 
 def char_matrix_to_image(char_matrix, font: FreeTypeFont):
