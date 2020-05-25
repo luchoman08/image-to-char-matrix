@@ -4,6 +4,11 @@ import numpy
 from io import BytesIO
 
 default_font = ImageFont.truetype("fonts/sans-serif.ttf", 20)
+allowed_mime_types = ['image/jpeg']
+
+
+def validate_image(mime_type):
+    return mime_type in allowed_mime_types
 
 
 def char_matrix_to_image(char_matrix, font: FreeTypeFont):
